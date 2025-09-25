@@ -1,5 +1,69 @@
 # GuestBook docker-compose Dojo
 
+<details>
+
+<summary>Table of content</summary>
+
+- [GuestBook docker-compose Dojo](#guestbook-docker-compose-dojo)
+  - [N'oubliez pas !](#noubliez-pas-)
+  - [0. Préparer votre environnement](#0-préparer-votre-environnement)
+  - [1. Conteneuriser l'application guestbook](#1-conteneuriser-lapplication-guestbook)
+    - [Pourquoi](#pourquoi)
+    - [Comment](#comment)
+    - [Vérifications](#vérifications)
+    - [Construire l'image de conteneur (Docker)](#construire-limage-de-conteneur-docker)
+    - [Pourquoi (Rappel du cours)](#pourquoi-rappel-du-cours)
+    - [Quoi](#quoi)
+    - [Comment](#comment-1)
+    - [Vérifications](#vérifications-1)
+    - [Exécuter localement avec docker compose](#exécuter-localement-avec-docker-compose)
+    - [Pourquoi](#pourquoi-1)
+    - [Quoi](#quoi-1)
+    - [Comment](#comment-2)
+    - [Vérifications](#vérifications-2)
+  - [2. Ajouter une base de données à votre service](#2-ajouter-une-base-de-données-à-votre-service)
+    - [Pourquoi](#pourquoi-2)
+    - [Quoi](#quoi-2)
+    - [Comment](#comment-3)
+    - [Vérifications](#vérifications-3)
+  - [3. Ajouter de la persistance et du hot-reloading au guestbook](#3-ajouter-de-la-persistance-et-du-hot-reloading-au-guestbook)
+    - [Pourquoi](#pourquoi-3)
+    - [Comment](#comment-4)
+      - [Persistance des données Redis](#persistance-des-données-redis)
+      - [Hot-reloading pour l'application Go](#hot-reloading-pour-lapplication-go)
+    - [Indices](#indices)
+    - [Vérifications](#vérifications-4)
+  - [4. (Optionnel) Créer des stacks avec du hot-reloading](#4-optionnel-créer-des-stacks-avec-du-hot-reloading)
+    - [Pourquoi](#pourquoi-4)
+    - [Comment](#comment-5)
+      - [Stack Node.js Express](#stack-nodejs-express)
+      - [Stack Python Flask](#stack-python-flask)
+      - [Stack Golang (autre framework)](#stack-golang-autre-framework)
+      - [Stack C++](#stack-c)
+    - [Vérifications](#vérifications-5)
+  - [5. (Optionnel) Déployer n'importe quelle application de YunoHost](#5-optionnel-déployer-nimporte-quelle-application-de-yunohost)
+    - [Pourquoi](#pourquoi-5)
+    - [Comment](#comment-6)
+    - [Vérifications](#vérifications-6)
+  - [6. Déployer JupyterLab en local et rendre les notebooks persistants](#6-déployer-jupyterlab-en-local-et-rendre-les-notebooks-persistants)
+    - [Pourquoi](#pourquoi-6)
+    - [Comment](#comment-7)
+    - [Indices](#indices-1)
+    - [Vérifications](#vérifications-7)
+  - [7. Ouvrir le guestbook à la classe](#7-ouvrir-le-guestbook-à-la-classe)
+    - [Pourquoi](#pourquoi-7)
+    - [Comment](#comment-8)
+      - [Étape 1 : Ajouter un service de gestion des utilisateurs](#étape-1--ajouter-un-service-de-gestion-des-utilisateurs)
+      - [Étape 2 : Rendre l'application accessible sur le réseau local](#étape-2--rendre-lapplication-accessible-sur-le-réseau-local)
+    - [Indices](#indices-2)
+    - [Vérifications](#vérifications-8)
+  - [8. Valider la portabilité de vos projets](#8-valider-la-portabilité-de-vos-projets)
+    - [Pourquoi](#pourquoi-8)
+    - [Comment](#comment-9)
+    - [Vérifications](#vérifications-9)
+    - [Conseils finaux](#conseils-finaux)
+</details>
+
 Votre objectif est de déployer une application web simple avec Docker-compose, et d'apprendre le maximum pendant cette session.
 
 C'est pourquoi il est essentiel que :
@@ -118,7 +182,7 @@ L'image que vous avez construite jusqu'à présent est assez grosse car elle con
 
 - [ ] Je peux construire une image localement
 - [ ] Je peux exécuter le conteneur localement
-- [ ] La taille de l'image est inférieure à 10MB
+- [ ] La taille de l'image est inférieure à 20MB
 
 ### Exécuter localement avec docker compose
 
